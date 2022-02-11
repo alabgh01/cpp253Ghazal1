@@ -90,14 +90,15 @@ void task10() {
     //TODO: Implement task10
     for (int n = 1; n <= 100; n++)
     {
-        if (n % 3 == 0)
-            cout << "fuzz ";
-        if (n % 5 == 0)
-            cout << "buzz ";
-        if (n % 3 == 0 and n % 5 == 0)
-            cout << "zzz " ;
-        if (n % 3 != 0 and n % 5 != 0)
-            cout << n << " ";
+        if (n % 3 == 0 && n % 5 == 0)
+            cout << setw(5) << "zzz";
+        else if (n % 5 == 0)
+            cout << setw(5) << "buzz";
+        else if (n % 3 == 0)
+            cout << setw(5) << "fuzz";
+        else if (n % 3 != 0 && n % 5 != 0)
+            cout << setw(5) << n;
+        if (n % 10 == 0)
+            cout << endl;
     }
-    
 }
