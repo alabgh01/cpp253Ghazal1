@@ -20,11 +20,9 @@ int main() {
    * values.
    * */
   Contact *contact1 = new Contact;
-  contact1->name = "name1";
-  contact1->phone = "123456789";
-  Contact contact2;
-  contact2.phone = "987654321";
-  contact2.name = "name2";
+  contact1->name = "Alice";
+  contact1->phone = "563-555-1234";
+  Contact contact2{"Roman", "563-387-1171"};
 
   cout << contact1->name << ": " << contact1->phone << endl;
   cout << contact2.name << ": " << contact2.phone << endl;
@@ -39,11 +37,11 @@ int main() {
    * */
 //   Room *room1 = new Room;
   unique_ptr<Room> room1(new Room());
-  room1->building = "builing1";
-  room1->number = 11;
+  room1->building = "Main";
+  room1->number = 101;
   Room room2;
-  room2.building = "building2";
-  room2.number = 22;
+  room2.building = "Olin";
+  room2.number = 202;
 
   cout << room1->building << " " << room1->number << endl;
   cout << room2.building << " " << room2.number << endl;
@@ -59,24 +57,41 @@ int main() {
    * values. The output should depend on the full-time/part-time status
    * */
   Employee employee1;
-  employee1.firstName = "fname1";
-  employee1.lastName = "lname1";
-  employee1.salary = 100;
+  employee1.firstName = "Alice";
+  employee1.lastName = "Anderson";
+  employee1.salary = 100000.00;
   employee1.isFullTime = true;
+  Employee employee2;
+  employee2.firstName = "Bob";
+  employee2.lastName = "Black";
+  employee2.salary = 50000.00;
+  employee2.isFullTime = false;
   if (employee1.isFullTime)
   {
-     cout << "first name: " << employee1.firstName 
-     << " last name: " << employee1.lastName 
-     << " salary: " << employee1.salary
-     << " " << employee1.firstName << " is a full-time worker"
+     cout << employee1.firstName << employee1.lastName 
+     << " is a full-time worker earning "
+     << employee1.salary
      << endl;
   }
   else
   {
-     cout << "first name: " << employee1.firstName 
-     << "last name: " << employee1.lastName 
-     << "salary: " << employee1.salary
-     << " " << employee1.firstName << " is a part-time worker"
+     cout << employee1.firstName << " " << employee1.lastName 
+     << " is a part-time worker earning "
+     << employee1.salary
+     << endl;   
+  }
+  if (employee2.isFullTime)
+  {
+     cout << employee2.firstName << employee2.lastName 
+     << " is a full-time worker earning "
+     << employee2.salary
+     << endl;
+  }
+  else
+  {
+     cout << employee2.firstName << " " << employee2.lastName 
+     << " is a part-time worker earning "
+     << employee2.salary
      << endl;   
   }
 
@@ -94,25 +109,24 @@ int main() {
   weight1 = rand() % 1000;
   weight2 = rand() % 1000;
 
-  Animal *animal1 = new Animal;
+//   Animal *animal1 = new Animal;
+  unique_ptr<Animal> animal1(new Animal());
   animal1->weight = weight1;
   Animal animal2;
   animal2.weight = weight2;
 
-  cout << animal1->weight << endl;
-  if (animal1->weight < 300)
-     cout << "hungry" << endl;
+  if (animal1->weight < 400)
+       cout << "Hungry animal weights " << animal1->weight << endl;
   else
-     cout << "full" << endl;
-  cout << animal2.weight << endl;
-  if (animal2.weight < 300)
-     cout << "hungry" << endl;
+       cout << "Well-fed animal weights " << animal1->weight << endl;
+  if (animal2.weight < 400)
+       cout << "Hungry animal weights " << animal2.weight << endl;
   else
-     cout << "full" << endl;
+       cout << "Well-fed animal weights " << animal2.weight << endl;
 
   // TODO: Do you need the following line?
-  // YES
-  delete animal1;
+  // NO
+//   delete animal1;
 
   cout << "\nTask 5" << endl;
   /*
@@ -120,21 +134,26 @@ int main() {
    * TODO: Declare and initialize variables of type Game and print their values.
    * TODO: Change the value of rating and print them again.
    * */
-  Game *game1 = new Game;
-  game1->title = "title1";
-  game1->rating = 4;
+//   Game *game1 = new Game;
+  unique_ptr<Game> game1(new Game());
+  game1->title = "The Legend of Zelda: Breath of the Wild";
+  game1->rating = 9;
   Game game2;
-  game2.title = "title2";
-  game2.rating = 9;
+  game2.title = "Resident Evil 7: Biohazard ";
+  game2.rating = 8;
 
   cout << game1->title << " has a rating of " << game1->rating << endl;
   cout << game2.title << " has a rating of " << game2.rating << endl;
+  
+  game1->rating = 10;
+  game2.rating = 7;
+  
   cout << game1->title << " has a rating of " << game1->rating << endl;
   cout << game2.title << " has a rating of " << game2.rating << endl;
 
   // TODO: Do you need the following line?
   // YES
-  delete game1;
+//   delete game1;
 
   cout << "\nTask 6" << endl;
   /*
@@ -145,12 +164,12 @@ int main() {
   Song song1;
   Song song2;
   Song song3;
-  song1.title = "title1";
-  song2.title = "title2";
-  song3.title = "title3";
-  song1.artist = "artis1";
-  song2.artist = "artis2";  
-  song3.artist = "artis3";
+  song1.title = "Perfect";
+  song2.title = "Finesse";
+  song3.title = "Pray For Me";
+  song1.artist = "Ed Sheeran";
+  song2.artist = "Bruno Mars & Cardi B";  
+  song3.artist = "The Weeknd & Kendrick Lamar";
   vector<Song> playlist = vector<Song>();
   playlist.push_back(song1);
   playlist.push_back(song2);
@@ -170,14 +189,15 @@ int main() {
    * */
 //   Company *company1 = new Company;
   unique_ptr<Company> company1(new Company());
-  company1->name = "name1";
+  company1->name = "Apple";
 //   company1->stockPrice = 2.0;
+  setStockPrice(*company1, 177.97);
 
   cout << company1->name << " stock price: " << getStockPrice(*company1)
        << endl;
 
 //   company1->setStockPrice(company1, 3.0);
-  setStockPrice(*company1, 2.0);
+  setStockPrice(*company1, 180.00);
 
   cout << company1->name << " stock price: " << getStockPrice(*company1)
        << endl;
@@ -194,21 +214,26 @@ int main() {
    * */
 //   Laptop *laptop1 = new Laptop;
   unique_ptr<Laptop> laptop1(new Laptop());
-  laptop1->color = "red";
-  laptop1->manufacturer = "me";
-  laptop1->price = 100;
   Laptop laptop2;
-  laptop2.color = "yellow";
-  laptop2.manufacturer = "them";
-  laptop2.price = 200;
+  
 
   cout << laptop1->color << " laptop by " << laptop1->manufacturer << " costs "
        << fixed << laptop1->price << endl;
+
+  laptop1->color = "Silver";
+  laptop1->manufacturer = "Apple";
+  laptop1->price = 1499.99;
+
   cout << laptop1->color << " laptop by " << laptop1->manufacturer << " costs "
        << fixed << laptop1->price << endl;
 
   cout << laptop2.color << " laptop by " << laptop2.manufacturer << " costs "
        << fixed << laptop2.price << endl;
+
+  laptop2.color = "Red";
+  laptop2.manufacturer = "Dell";
+  laptop2.price = 499.99;
+
   cout << laptop2.color << " laptop by " << laptop2.manufacturer << " costs "
        << fixed << laptop2.price << endl;
 
@@ -224,8 +249,8 @@ int main() {
    * NOTE: Use functions, rather directly accessing the members of the structure
    * */
   University university1;
-  university1.setName("Coolage College");
-  university1.setRating(9);
+//   university1.setName("Coolage College");
+//   university1.setRating(9);
   cout << university1.getName() << " has a rating of "
        << university1.getRating() << endl;
   university1.setName("Luther College");
@@ -244,21 +269,49 @@ int main() {
   Student student1;
   Student student2;
   Student student3;
-  student1.name = "name1";
-  student2.name = "name2";
-  student3.name = "name3";
-  student1.major = "major1";
-  student2.major = "major2";
-  student3.major = "major3";
-  student1.gpa = 1.2;
-  student2.gpa = 2.2;
-  student3.gpa = 3.2;
+  Student student4;
+  Student student5;
+  Student student6;
+  Student student7;
+  Student student8;
+
+  student1.name = "Alice";
+  student2.name = "Bob";
+  student3.name = "Chuck";
+  student4.name = "Dave";
+  student5.name = "Eve";
+  student6.name = "Fred";
+  student7.name = "George";
+  student8.name = "Hillary";
+
+  student1.major = "Anthropology";
+  student2.major = "Biology";
+  student3.major = "Computers";
+  student4.major = "Dance";
+  student5.major = "Environment";
+  student6.major = "French";
+  student7.major = "German";
+  student8.major = "History";
+
+  student1.gpa = 3.00;
+  student2.gpa = 3.20;
+  student3.gpa = 3.50;
+  student4.gpa = 2.50;
+  student5.gpa = 2.50;
+  student6.gpa = 3.20;
+  student7.gpa = 2.00;
+  student8.gpa = 2.00;
 
   vector<Student> roster = vector<Student>();
 
   roster.push_back(student1);
   roster.push_back(student2);
   roster.push_back(student3);
+  roster.push_back(student4);
+  roster.push_back(student5);
+  roster.push_back(student6);
+  roster.push_back(student7);
+  roster.push_back(student8);
 
   for (Student student : roster) {
     cout << left << setw(10) << student.name << setw(15) << student.major
