@@ -36,6 +36,7 @@ int main() {
   readStates(statesFileContent, states);
   cout << "Read " << states.size() << " state(s) from the file" << endl;
 
+
   vector<Game> games;
   readInventory(inventoryFileContent, games);
   cout << "Read " << games.size() << " games(s) from the file" << endl;
@@ -50,6 +51,23 @@ int main() {
      * TODO: Keep asking if the uer wants to buy another one
      * TODO: Don't crash if the user enters bogus numbers
      * */
+
+    displayInventory(games);
+    // bool wantsToBuy = true;
+    // while(wantsToBuy){
+    // }
+    cout << "enter the game numer" << endl;
+    string gN;
+    cin >> gN;
+    // cout << gN;
+    // cout << "enter the number of copies" << endl;
+    // int cN;
+    // cin >> cN;
+    // int n = readANumber(0,100);
+    cout << "do you want to buy more?" << endl;
+    cin >> ans;
+    // if (ans != 'y' and ans != 'n')
+
   } while (ans == 'y');
   double salesTax = 0;
   readState(states, salesTax);
