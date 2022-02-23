@@ -29,6 +29,12 @@ using namespace std;
  * TODO: Implement this structure
  */
 struct Game {
+  // int number;
+  string title;
+  string publisher;
+  string platform;
+  int releaseYear;
+  double price;
 
   /**
    * @brief Display game properties (title, publisher, platform, release year,
@@ -36,7 +42,21 @@ struct Game {
    *
    * TODO: Implement this function
    */
-  void print() {}
+  // void print(Game g) {
+  //   cout << g.title << endl;
+  //   cout << g.publisher << endl;
+  //   cout << g.platform << endl;
+  //   cout << g.releaseYear << endl;
+  //   cout << g.price << endl;
+  // }
+  void print() {
+    // cout << setw(3) << number << setw(3) << '|';
+    cout << setw(20) << title << setw(5) << '|';
+    cout << setw(20) << publisher << setw(5) << '|';
+    cout << setw(20) << platform << setw(5) << '|';
+    cout << setw(20) << releaseYear << setw(5) << '|';
+    cout << setw(20) << price << setw(5) << '|';
+  }
 };
 
 /**
@@ -45,7 +65,11 @@ struct Game {
  *
  * TODO: Implement this structure
  */
-struct State {};
+struct State {
+  string code;
+  double taxRate;
+  string name;
+};
 
 /**
  * @brief Structure to store games in cart and its properties: game and quantity
@@ -53,6 +77,9 @@ struct State {};
  * TODO: Implement this structure
  */
 struct GameInCart {
+  Game game;
+  int quantity;
+  
   /**
    * @brief Display game properties (title, platform, price, quantity) on the
    * standard output (console)
@@ -60,7 +87,12 @@ struct GameInCart {
    * TODO: Implement this function
    *
    */
-  void print() {}
+  void print(GameInCart g) {
+    cout << g.game.title << endl;
+    cout << g.game.platform << endl;
+    cout << g.game.price << endl;
+    cout << g.quantity << endl;
+  }
   /**
    * @brief Save game properties (title, platform, price, quantity) to the file
    * (fout)
@@ -68,7 +100,15 @@ struct GameInCart {
    * @param fout
    * TODO: Implement this function
    */
-  void save(ofstream &fout) {}
+  void save(ofstream &fout) {
+    fout.open("out.txt");
+    fout << game.title << endl;
+    fout << game.platform << endl;
+    fout << game.price << endl;
+    fout << quantity << endl;
+    fout.flush();
+    fout.close();
+  }
 };
 
 /**
