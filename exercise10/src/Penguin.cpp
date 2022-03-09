@@ -17,6 +17,12 @@ Penguin::Penguin(string name, int age, bool swimming)
 
 string Penguin::move() const {
   // TODO: implement the function
+  if(this->isSwimming()){
+    return "swims";
+  }
+  else{
+    return "walks";
+  }
   return "Implement me";
 }
 
