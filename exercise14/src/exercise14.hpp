@@ -11,4 +11,20 @@
 #ifndef EXERCISE14_H
 #define EXERCISE14_H
 
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <map>
+
+using namespace std;
+
+void ReadFile(string filename, int wNumber);
+
+string RollDice();
+
+string GetWords(int wNumber, map<string, string> wordsMap);
+
 #endif
