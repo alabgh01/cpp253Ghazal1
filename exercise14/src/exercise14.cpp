@@ -52,7 +52,7 @@ void ReadFile(string filename, int wNumber){
     }
     // vector<string> colors {"\033[31m", "\033[32m", "\033[33m", "\033[34m", "\033[35m", "\033[36m", "\033[37m", "\033[38m", "\033[39m", "\033[40m"};
 
-    cout << "Our candidates for you are:" << endl;
+    cout << "Password Candidates:" << endl;
     for(auto it = cands.begin(); it != cands.end(); ++it){
         cout << *it << endl;
     }
